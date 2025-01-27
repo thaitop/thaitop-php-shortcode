@@ -1,0 +1,10 @@
+.thaitop-php-shortcode textarea.code {
+    font-family: monospace;
+    white-space: pre;
+    overflow: auto;
+}
+
+.thaitop-php-shortcode pre {
+    margin: 0;
+    white-space: pre-wrap;
+}
