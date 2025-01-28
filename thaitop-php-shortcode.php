@@ -2,7 +2,7 @@
 /*
 Plugin Name: ThaiTop Custom PHP Shortcode
 Description: Execute custom PHP code via shortcodes in WordPress
-Version: 1.0.1
+Version: 1.0.2
 Author: ThaiTop
 */
 

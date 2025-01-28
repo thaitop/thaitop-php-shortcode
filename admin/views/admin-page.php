@@ -89,7 +89,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                         class="regular-text" required 
                         value="<?php echo $edit_code ? esc_attr($edit_code->code_id) : ''; ?>"
                         <?php echo $edit_code ? 'readonly' : ''; ?>>
-                    <p class="description">Use this ID in the shortcode: [php_code id="your-id"]</p>
+                    <p class="description">
+                        Basic usage: [php_code id="your-id"]<br>
+                        With attributes: [php_code id="your-id" name="John" age="25" custom="value"]<br>
+                        Access attributes in code: $name, $age, $custom<br>
+                        Access all attributes as array: $attributes['name'], $attributes['custom']
+                    </p>
                 </td>
             </tr>
             <tr>
@@ -98,6 +103,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                     <textarea name="php_code" id="php_code" rows="10" class="large-text code" required><?php 
                         echo $edit_code ? esc_textarea($edit_code->php_code) : ''; 
                     ?></textarea>
+                    <div class="code-examples">
+                        <h4>Examples of Using Attributes:</h4>
+                        <pre>
+// Example 1: Direct variable access
+echo "Hello $name, you are $age years old";
+
+// Example 2: Using attributes array
+echo "Welcome {$attributes['name']}!";
+
+// Example 3: Conditional check
+if(isset($age) && is_numeric($age)) {
+    echo "Age verified: " . intval($age);
+}
+
+// Example 4: Multiple attributes
+$price = isset($price) ? floatval($price) : 0;
+$quantity = isset($quantity) ? intval($quantity) : 1;
+echo "Total: $" . ($price * $quantity);
+                        </pre>
+                    </div>
                 </td>
             </tr>
         </table>
@@ -184,6 +209,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 }
 .copy-button {
     min-width: 60px;
+}
+.code-examples {
+    margin-top: 10px;
+    padding: 10px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.code-examples h4 {
+    margin: 0 0 10px 0;
+    color: #23282d;
+}
+.code-examples pre {
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #e5e5e5;
+    overflow-x: auto;
 }
 </style>
 

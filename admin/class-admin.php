@@ -24,7 +24,8 @@ class ThaiTop_PHP_Shortcode_Admin {
             'PHP Shortcodes',
             'manage_options',
             'thaitop-php-shortcode',
-            array($this, 'render_admin_page')
+            array($this, 'render_admin_page'),
+            'dashicons-shortcode' // เพิ่ม icon ที่เกี่ยวข้องกับ shortcode
         );
     }
     
